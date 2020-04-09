@@ -22,36 +22,31 @@
       class App extends React.Component {
         //creation of state or react object
         state = {
-          name:'Ryu',
-          age: 35
-        }
-        //creation of function in React, the e event variable is been apply a method name target
-        // To use the this reference in my function, we need to use arrow functions
-        handleClick = (e) =>{
-          //use of setState function to change state property
+          name: "Ryu",
+          age: 35,
+        };
+        handleChange = (e) => {
           this.setState({
-            name:'Yoshi'
-          })
-          console.log(this.state);
-        }
-        handleMouseOver(e){
-          console.log(e.target , e.pageX);
-        }
-        handleCopy(e){
-          console.log('Try being original for once!')
-        }
+            name: e.target.value,
+          });
+        };
+        handleSubmit = (e) => {
+          //Uso de prevent default para evitar que al hacer submit se recargue la pagina
+          e.preventDefault();
+          console.log("form submitted", this.state.name);
+        };
+
         //Render method to render on browser
         render() {
           return (
             //JSX code
             <div className="app-content">
-              <h1>Hey, ninjas</h1>
-              {/*Usage of dinamic data with states, important to be inside curly braces*/}
-              <p>My name is: { this.state.name } and I am { this.state.age }</p>
-              {/*creation of button tag which event will be handle by the function handleClick*/}
-              <button onClick={this.handleClick} >Click Me</button>
-              <button onMouseOver={this.handleMouseOver}>Hover me</button>
-              <p onCopy={this.handleCopy}>What we think, we become</p>
+              <h1>My name is {this.state.name}</h1>
+              {/*creation of form and using onSubmit on it to use eather the return key or the submit button*/}
+              <form onSubmit={this.handleSubmit}>
+                <input type="text" onChange={this.handleChange} />
+                <button>Submit</button>
+              </form>
             </div>
           );
         }
