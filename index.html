@@ -25,7 +25,16 @@
           name:'Ryu',
           age: 35
         }
-
+        //creation of function in React, the e event variable is been apply a method name target
+        handleClick(e){
+          console.log(e.target);
+        }
+        handleMouseOver(e){
+          console.log(e.target , e.pageX);
+        }
+        handleCopy(e){
+          console.log('Try being original for once!')
+        }
         //Render method to render on browser
         render() {
           return (
@@ -34,6 +43,10 @@
               <h1>Hey, ninjas</h1>
               {/*Usage of dinamic data with states, important to be inside curly braces*/}
               <p>My name is: { this.state.name } and I am { this.state.age }</p>
+              {/*creation of button tag which event will be handle by the function handleClick*/}
+              <button onClick={this.handleClick} >Click Me</button>
+              <button onMouseOver={this.handleMouseOver}>Hover me</button>
+              <p onCopy={this.handleCopy}>What we think, we become</p>
             </div>
           );
         }
