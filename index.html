@@ -26,8 +26,13 @@
           age: 35
         }
         //creation of function in React, the e event variable is been apply a method name target
-        handleClick(e){
-          console.log(e.target);
+        // To use the this reference in my function, we need to use arrow functions
+        handleClick = (e) =>{
+          //use of setState function to change state property
+          this.setState({
+            name:'Yoshi'
+          })
+          console.log(this.state);
         }
         handleMouseOver(e){
           console.log(e.target , e.pageX);
