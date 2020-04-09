@@ -16,18 +16,24 @@
   </head>
   <body>
     <div id="app"></div>
-
+    <!--Creation of script with JSX content, usage of Babel type to translate JSX-->
     <script type="text/babel">
+      //creation of component with React
       class App extends React.Component {
+        //Render method to render on browser
         render() {
           return (
+            //JSX code
             <div className="app-content">
               <h1>Hey, ninjas</h1>
-              <p>{Math.random()*10}</p>
+              {/*Usage of JSX comment sintax and dinamic view con p tag*/}
+              <p>{Math.random() * 10}</p>
             </div>
           );
         }
       }
+      //React sintax to render component, parameters to include is class name inside tag
+      //Second, get id of html element where the react component will be rendered
       ReactDOM.render(<App />, document.getElementById("app"));
     </script>
   </body>
