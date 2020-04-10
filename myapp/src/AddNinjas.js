@@ -13,7 +13,9 @@ class AddNinjas extends Component{
       };
       handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        //Here we are calling the given addNinja functino and returning it with the 
+        //capted state as parameter
+        this.props.addNinja(this.state) 
       };
     render(){
         return(
