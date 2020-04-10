@@ -21,11 +21,21 @@ class App extends Component {
   addNinja = (ninja) => {
     //First we add another property to the object ninja a random id
     ninja.id = Math.random();
-    //Now that we have our new ninja info complete, we create a local variable 
+    //Now that we have our new ninja info complete, we create a local variable
     //Which will be an array of the previous ninjas and we add the new ninja
     //This is done through a SPREAD OPERATOR
     let ninjas = [...this.state.ninjas, ninja];
     //Then we set our new state which will be updated with our local array we just created
+    this.setState({
+      ninjas: ninjas,
+    });
+  };
+  deleteNinja = (id) => {
+    //Using an Non Destructive method call FILTER
+    //It will asign to the local variable ninjas an array that satisfies the condicion
+    let ninjas = this.state.ninjas.filter(ninja=>{
+      return ninja.id !== id
+    });
     this.setState({
       ninjas: ninjas
     })
@@ -40,8 +50,8 @@ class App extends Component {
         is for functional components, for class components is different.
       */}
         {/**In this case to pase the state is not needed the this prefix, because we are using stateless function */}
-        <Ninjas ninjas={this.state.ninjas} />
-         {/* Here we are sending by parameter de addNinja function to the component AddNinja */}
+        <Ninjas ninjas={this.state.ninjas} deleteNinja={this.deleteNinja} />
+        {/* Here we are sending by parameter de addNinja function to the component AddNinja */}
         <AddNinjas addNinja={this.addNinja} />
       </div>
     );

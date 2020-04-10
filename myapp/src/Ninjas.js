@@ -4,7 +4,7 @@ import React from "react";
 //To the Ninjas functional component through parameter and then use through the code
 //props contain the props object info, it can be name different
 //With funtional components, we can destructure the props directly in the function parameter parentesis
-function Ninjas({ ninjas }) {
+function Ninjas({ ninjas, deleteNinja }) {
   // console.log(props);
   const ninjaList = ninjas.map((ninja) => {
     //here we are using conditionals
@@ -31,6 +31,15 @@ function Ninjas({ ninjas }) {
         <div>Name: {ninja.name}</div>
         <div>Age: {ninja.age}</div>
         <div>Belt: {ninja.belt}</div>
+        <button
+        //Using ANONIMOUS FUNCTION is use to we can send id by parameters without calling the method
+        //at the moment, instead it will be call when the button is click.
+          onClick={() => {
+            deleteNinja(ninja.id);
+          }}
+        >
+          Delete Ninja
+        </button>
       </div>
     ) : null;
   });
