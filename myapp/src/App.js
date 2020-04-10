@@ -6,6 +6,16 @@ import Ninjas from "./Ninjas";
 //here we are using a functional component instead of a class component
 //In this case the render function is not needed
 function App() {
+  //Here we create a state which will contain an array of objects, 
+  //in this case because we are using stateless function component, 
+  //we need to declare the state varible type
+  const state = {
+    ninjas: [
+      { name: "Ryu", age: 30, belt: "black", id: 1 },
+      { name: "Yoshi", age: 20, belt: "green", id: 2 },
+      { name: "Crystal", age: 25, belt: "pink", id: 3 },
+    ],
+  };
   return (
     <div className="App">
       <h1>My First React app!</h1>
@@ -14,9 +24,8 @@ function App() {
         Also we are sending object info through props, this sintax
         is for functional components, for class components is different.
       */}
-      <Ninjas name={'Ryu'} age={25} belt={'Black'}/>
-      {/**here we are recycling the Ninjas component */}
-      <Ninjas name={'Yoshi'} age={80} belt={'White'}/>
+      {/**In this case to pase the state is not needed the this prefix, because we are using stateless function */}
+      <Ninjas ninjas={state.ninjas} />
     </div>
   );
 }
