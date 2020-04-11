@@ -33,13 +33,25 @@ class App extends Component {
   deleteNinja = (id) => {
     //Using an Non Destructive method call FILTER
     //It will asign to the local variable ninjas an array that satisfies the condicion
-    let ninjas = this.state.ninjas.filter(ninja=>{
-      return ninja.id !== id
+    let ninjas = this.state.ninjas.filter((ninja) => {
+      return ninja.id !== id;
     });
     this.setState({
-      ninjas: ninjas
-    })
+      ninjas: ninjas,
+    });
   };
+  //This method is triggered when the component is mounted or displayed from the virtual DOM to the fisical DOM
+  //The process is only done once when the app is rendered
+  componentDidMount() {
+    console.log("component mounted");
+  }
+  //This method is triggered when a change is applied to the state
+  //It has to parameters, the first one display de previous props
+  //the second one display the previous state
+  componentDidUpdate(prevProps,prevState){
+    console.log('component updated');
+    console.log(prevProps, prevState);
+  }
   render() {
     return (
       <div className="App">
